@@ -32,5 +32,6 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    list-style: none;
 }
 </style>

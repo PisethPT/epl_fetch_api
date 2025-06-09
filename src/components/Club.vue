@@ -1,7 +1,8 @@
 <script setup>
 import { defineProps } from 'vue';
 
-const baseUrl = "https://pisethpt.github.io/events-data/";
+// const baseUrl = "https://pisethpt.github.io/events-data/";
+const baseUrl = "http://localhost:32687/";
 const props = defineProps({
     club: {
         type: Object,
@@ -11,19 +12,23 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="card">
-        <h2>{{ club.name }}</h2>
-        <img :src="baseUrl + club.logo" alt="Club Logo" width="100" height="100">
-        <p>Founded: {{ club.founded }}</p>
-        <p>Stadium: {{ club.stadium }}</p>
-        <p>Manager: {{ club.manager }}</p>
-    </div>
+    <RouterLink :to="{ name: 'ClubDetail', params: { id: club.id } }">
+        <div class="card">
+            <h2>{{ club.name }}</h2>
+            <img :src="baseUrl + club.logo" alt="Club Logo" width="100" height="100">
+            <p>Founded: {{ club.founded }}</p>
+            <p>Stadium: {{ club.stadium }}</p>
+            <p>Manager: {{ club.manager }}</p>
+        </div>
+    </RouterLink>
 </template>
 
 <style scoped>
-p, h2{
+p,
+h2 {
     color: black;
 }
+
 .card {
     background-color: #fff;
     border-radius: 8px;
